@@ -1,13 +1,9 @@
-# Your Name Here
+# Mak Weinzierl
 # UWYO COSC 1010
-# Submission Date
+# October 17, 2024
 # Lab 06
-# Lab Section: 
-# Sources, people worked with, help given to: 
-# your
-# comments
-# here
-
+# Lab Section: 12
+# Sources: Dictionaries lecture, Caleb Egbert
 
 random_string = """
 jppamiqxegokaizvkyawwurhewtcxohryzptznyuedhhmawpic
@@ -79,11 +75,20 @@ print(len(random_string)) # Print out the size for reference
     # You will  need to add the letter to the dictionary on first occurrence 
     # Then increment its corresponding count 
 
-
 #Load all the elements into a dictionary
 #Will need to first declare a dictionary 
 
+letter_occurrences = {}
+for letter in sorted(random_string):
+    if letter not in letter_occurrences.keys():
+        letter_occurrences[letter] = 1
+    else:
+        letter_occurrences[letter] += 1
+
 # Output: each letter and its corresponding occurrence in alphabetical order
+
+for key, value in letter_occurrences.items():
+    print(f"{key}: {value}")
 
 print("*"*75)
 # Output which letter occurred the most 
@@ -91,10 +96,23 @@ print("*"*75)
 most_occurred = ""
 least_occurred = ""
 
+for key in letter_occurrences:
+    if letter_occurrences[key] > letter_occurrences.get(most_occurred,0):
+        most_occurred = key
+
+for key in letter_occurrences:
+    if letter_occurrences[key] < letter_occurrences.get(least_occurred,2500):
+        least_occurred = key
+
 print(f"The letter that occurred the most is {most_occurred}")
+
 print("*"*75)
 # Output which letter occurred the least 
-print(f"The letter that occurred the most is {least_occurred}")
-print("*"*75)
 
+print(f"The letter that occurred the least is {least_occurred}")
+
+print("*"*75)
 # Output what the percentage of the string each character is, again in alphabetical
+
+for key, value in letter_occurrences.items():
+    print(f"{key}: {value / 25}%")
